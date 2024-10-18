@@ -18,11 +18,10 @@ const WhatsappButton = ({ content }) => {
             shadow-md 
             w-full
             transition-transform 
-            duration-300 
+            duration-1000
             ease-in-out
             shadow-primary
             hover:bg-[#1E8D92]
-            hover:scale-105
             `}
         >
             {content}
