@@ -3,8 +3,25 @@ import logo from '../public/logo.png'
 import WhatsappButton from './components/whatsappButton'
 import CardService from './components/cardService'
 import Footer from './components/footer'
+import fachada from '../public/fachada.png'
+import { GiPin } from "react-icons/gi";
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io"
+import { useState } from 'react'
 
 function App() {
+  const images = [fachada, logo];
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const handleNext = () => {
+    setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+  };
+
+  const handlePrev = () => {
+    setCurrentImageIndex((prevIndex) => 
+      prevIndex === 0 ? images.length - 1 : prevIndex - 1
+    );
+  };
+
   return (
     <>
       <section className='h-[100vh] bg-[url("public/tai9.jpg")] bg-cover bg-center'>
@@ -34,7 +51,7 @@ function App() {
                 </p>
               </div>
             </div>
-            <div className='w-[60%]'>
+            <div className='w-[55%]'>
               <WhatsappButton content={'AGENDAR UMA CONSULTA AGORA'} />
             </div>
           </div>
@@ -60,15 +77,15 @@ function App() {
         <div className='flex w-full mt-2 justify-around items-center'>
           <CardService 
             img='../public/lentes.jpg'
-            title={"LENTES"}
-          />
-          <CardService 
-            img='../public/lentes-tree.jpg'
             title={"PREENCHIMENTO"}
           />
           <CardService 
-            img='../public/lentes-four.jpg'
+            img='../public/lentes-tree.jpg'
             title={"LENTES"}
+          />
+          <CardService 
+            img='../public/lentes-four.jpg'
+            title={"CLAREAMENTO"}
           />
         </div>
         <div className='mt-5 w-96'>
@@ -91,23 +108,31 @@ function App() {
       {/*QUEM SOMOS NÓS*/}
       <section className='flex flex-col items-center text-center'>
         <h3 className='text-primary text-[20px] mt-2 tracking-[0.30rem]'>QUEM SOMOS NÓS</h3>
-        <h4 className='text-[28px] font-bold mt-[-0.5%]'>
+        <h4 className='text-[28px] font-bold mt-[-0.5%] whitespace-nowrap'>
           Um pouco sobre a historia da ortho brasil 
-          as nossas <span className='text-primary'>localizações</span>
+          as nossas {''}
+          <span className='text-primary inline-flex items-center'>
+            localizações <GiPin className='text-[38px]' />
+          </span>
         </h4>
-        <div className='flex w-full justify-around mt-20'>
+        <div className='flex w-full justify-around mt-8'>
           <div className='flex flex-col items-center'>
             <div className='flex items-center gap-3'>
-              <button className='text-primary font-extrabold text-[25px]'>{'<'}</button>
+              <button className='text-primary font-extrabold text-[25px]' onClick={handlePrev}>
+                <IoIosArrowBack className='text-[45px]' />
+              </button>
                 <img 
-                  src=""
+                  src={images[currentImageIndex]} 
+                  className='rounded-full border-2 border-primary h-[380px] w-[380px]'
                   alt="local" 
                 />
-              <button className='text-primary font-extrabold text-[25px]'>{'>'}</button>
+              <button className='text-primary font-extrabold text-[25px]' onClick={handleNext}>
+                <IoIosArrowForward className='text-[45px]' />
+              </button>
             </div>
-            <p>AV.DESEMBARGADOR MOREIRA</p>
+            <p className='font-medium mt-1'>432 R. DA ASSUNÇÃO</p>
           </div>
-          <div className='text-left w-[580px]'>
+          <div className='text-left w-[580px] mt-5'>
             <p className='text-[18px] font-medium border-l-2 mb-5 border-primary pl-4'>
               Oferecemos um serviço Premium que vai além do sorriso, 
               focando na harmonia e funcionalidade dos seus dentes. 
@@ -120,7 +145,7 @@ function App() {
               Sinta-se confiante em todas as ocasiões e experimente a 
               excelência em cada detalhe do seu tratamento.
             </p>
-            <WhatsappButton content={"AGENDAR UMA CONSULTA AGORA"} />
+            <WhatsappButton content={"AGENDAR UMA CONSULTA EM UMA UNIDADE"} />
           </div>
         </div>
       </section>
@@ -137,7 +162,7 @@ function App() {
             className='h-80 w-48'
             alt="print depoimento"
           />
-                    <img 
+          <img 
             src=""
             className='h-80 w-48'
             alt="print depoimento"

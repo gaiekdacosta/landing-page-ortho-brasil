@@ -1,3 +1,5 @@
+import { FaWhatsapp } from "react-icons/fa";
+
 const WhatsappButton = ({ content }) => {
     const whatsappLink = () => {
         window.open(
@@ -10,21 +12,25 @@ const WhatsappButton = ({ content }) => {
         <button
             onClick={whatsappLink}
             className={`
-            bg-primary 
-            p-2.5
-            font-medium 
-            text-white 
-            rounded-md
-            shadow-md 
-            w-full
-            transition-transform 
-            duration-1000
-            ease-in-out
-            shadow-primary
-            hover:bg-[#1E8D92]
+                flex
+                item-center
+                justify-center
+                gap-1
+                bg-primary 
+                p-2.5
+                font-extrabold
+                text-white 
+                rounded-md
+                shadow-md 
+                w-full
+                transition-transform 
+                duration-1000
+                ease-in-out
+                shadow-primary
+                hover:bg-[#1E8D92]
             `}
         >
-            {content}
+            <FaWhatsapp className="text-[22px]" /> {content}
         </button>
     );
 }
