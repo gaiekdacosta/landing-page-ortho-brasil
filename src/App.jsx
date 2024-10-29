@@ -5,6 +5,9 @@ import CardService from './components/cardService'
 import Footer from './components/footer'
 import fachada from '../public/fachada.png'
 import fachada2 from '../public/fachada2.png'
+import preenchimento from '../public/lentes.jpg'
+import lentes from '../public/lentes-tree.jpg'
+import clareamento from '../public/lentes-four.jpg'
 import { GiPin } from "react-icons/gi";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io"
 import { useState } from 'react'
@@ -83,15 +86,15 @@ function App() {
         </h4>
         <div className='flex w-full mt-2 justify-around items-center mobile:flex-col'>
           <CardService
-            img='../public/lentes.jpg'
+            img={preenchimento}
             title={"PREENCHIMENTO"}
           />
           <CardService
-            img='../public/lentes-tree.jpg'
+            img={lentes}
             title={"LENTES"}
           />
           <CardService
-            img='../public/lentes-four.jpg'
+            img={clareamento}
             title={"CLAREAMENTO"}
           />
         </div>
