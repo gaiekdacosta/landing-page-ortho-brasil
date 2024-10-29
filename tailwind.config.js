@@ -9,7 +9,10 @@ export default {
       },
       boxShadow: {
         primaryShadow: '0px 4px 10px rgba(30, 141, 146, 0.5)'
-      }
+      },
+      screens: {
+        'mobile': {'max': '768px'},
+      },
     },
   },
   plugins: [],

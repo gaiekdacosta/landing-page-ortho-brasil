@@ -14,15 +14,13 @@ const WhatsappButton = ({ content }) => {
             className={`
                 flex
                 item-center
-                justify-center
-                gap-1
+                text-center
                 bg-primary 
-                p-2.5
+                p-2
                 font-extrabold
                 text-white 
                 rounded-md
                 shadow-md 
-                w-full
                 transition-transform 
                 duration-1000
                 ease-in-out
@@ -30,7 +28,8 @@ const WhatsappButton = ({ content }) => {
                 hover:bg-[#1E8D92]
             `}
         >
-            <FaWhatsapp className="text-[22px]" /> {content}
+            <FaWhatsapp className="text-[22px]" /> 
+            <p className="whitespace-nowrap">{content}</p>
         </button>
     );
 }

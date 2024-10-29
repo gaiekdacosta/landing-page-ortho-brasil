@@ -25,22 +25,18 @@ function App() {
   return (
     <>
       <section className='h-[100vh] bg-[url("public/tai9.jpg")] bg-cover bg-center'>
-        <div className='flex justify-around h-[100%] items-center'>
-          <div className='flex flex-col w-[50%] gap-2 p-4 rounded-lg'>
-            <div className='text-[25px] mt-[-5%]'>
-              <img 
-                className='h-16 w-16'
-                src={logo}
-                alt="logo" 
-              />
-              <p className='font-black leading-7'>
+        <div className='flex justify-around h-[100%] items-center mobile:flex-col'>
+          <div className='flex flex-col w-[50%] gap-2 p-4 rounded-lg mobile:w-full'>
+            <div className='text-[25px]  mobile:text-[20px]'>
+              <img className='h-16 w-16' src={logo} alt="logo" />
+              <p className='font-black leading-7 mobile:leading-6'>
                 Transforme sua autoestima com a 
                 expertise de uma equipe 
                 <span className='text-primary ml-1'>
                   especializada em estética
                 </span>
               </p>
-              <div className='flex flex-col gap-5 mt-2  leading-7'>
+              <div className='flex flex-col gap-5 mt-2 leading-7 mobile:leading-6 mobile:text-[19px]'>
                 <p>
                   Oferecemos um serviço Premium que vai além do sorriso, 
                   focando na harmonia e funcionalidade dos seus dentes. 
@@ -51,11 +47,11 @@ function App() {
                 </p>
               </div>
             </div>
-            <div className='w-[55%]'>
+            <div className='w-[55%] mobile:w-full'>
               <WhatsappButton content={'AGENDAR UMA CONSULTA AGORA'} />
             </div>
           </div>
-          <div>
+          <div className='mobile:flex mobile:p-4 mobile:justify-center mobile:w-full'>
             <iframe 
               width="560" 
               height="315" 
@@ -68,13 +64,13 @@ function App() {
       {/* SERVIÇOS */}
       <section className='flex flex-col items-center text-center'>
         <h3 className='text-primary text-[20px] mt-2 tracking-[0.30rem]'>SERVIÇOS</h3>
-        <h4 className='text-[28px] font-bold mt-[-0.5%]'>
+        <h4 className='text-[28px] font-bold mt-[-0.5%] mobile:leading-7'>
           Quais os nossos procedimentos {' '}
           <span className='text-primary'>
             mais procurados?
           </span>
         </h4>
-        <div className='flex w-full mt-2 justify-around items-center'>
+        <div className='flex w-full mt-2 justify-around items-center mobile:flex-col'>
           <CardService 
             img='../public/lentes.jpg'
             title={"PREENCHIMENTO"}
@@ -88,7 +84,7 @@ function App() {
             title={"CLAREAMENTO"}
           />
         </div>
-        <div className='mt-5 w-96'>
+        <div className='mt-5 w-96 mobile:w-80'>
           <WhatsappButton 
             content={"AGENDAR UM DOS PROCEDIMENTOS"} 
           />
@@ -97,7 +93,7 @@ function App() {
       {/*CASOS DE SUCESSO*/}
       <section className='flex flex-col items-center text-center'>
         <h3 className='text-primary text-[20px] mt-2 tracking-[0.30rem]'>CASOS DE SUCESSO</h3>
-        <h4 className='text-[28px] font-bold mt-[-0.5%]'>
+        <h4 className='text-[28px] font-bold mt-[-0.5%] mobile:leading-7'>
           Conheça alguns dos nossos trabalhos 
           que <span className='text-primary'>transformam sorrisos</span>
         </h4>
@@ -108,22 +104,22 @@ function App() {
       {/*QUEM SOMOS NÓS*/}
       <section className='flex flex-col items-center text-center'>
         <h3 className='text-primary text-[20px] mt-2 tracking-[0.30rem]'>QUEM SOMOS NÓS</h3>
-        <h4 className='text-[28px] font-bold mt-[-0.5%] whitespace-nowrap'>
+        <h4 className='text-[28px] font-bold mt-[-0.5%] whitespace-nowrap mobile:whitespace-normal mobile:leading-7'>
           Um pouco sobre a historia da ortho brasil 
           as nossas {''}
           <span className='text-primary inline-flex items-center'>
             localizações <GiPin className='text-[38px]' />
           </span>
         </h4>
-        <div className='flex w-full justify-around mt-8'>
+        <div className='flex w-full justify-around mt-8 mobile:flex-col mobile:justify-center mobile:mt-3'>
           <div className='flex flex-col items-center'>
-            <div className='flex items-center gap-3'>
+            <div className='flex items-center gap-3 mobile:gap-0'>
               <button className='text-primary font-extrabold text-[25px]' onClick={handlePrev}>
                 <IoIosArrowBack className='text-[45px]' />
               </button>
                 <img 
                   src={images[currentImageIndex]} 
-                  className='rounded-full border-2 border-primary h-[380px] w-[380px]'
+                  className='rounded-full border-2 border-primary h-[380px] w-[380px] mobile:h-[280px] mobile:w-[280px]'
                   alt="local" 
                 />
               <button className='text-primary font-extrabold text-[25px]' onClick={handleNext}>
@@ -132,8 +128,8 @@ function App() {
             </div>
             <p className='font-medium mt-1'>432 R. DA ASSUNÇÃO</p>
           </div>
-          <div className='text-left w-[580px] mt-5'>
-            <p className='text-[18px] font-medium border-l-2 mb-5 border-primary pl-4'>
+          <div className='flex flex-col items-center text-left w-[580px] mt-5 mobile:w-full'>
+            <p className='text-[18px] font-medium border-l-2 mb-5 border-primary pl-4 mobile:w-[95vw]'>
               Oferecemos um serviço Premium que vai além do sorriso, 
               focando na harmonia e funcionalidade dos seus dentes. 
               <br /><br />
@@ -145,18 +141,22 @@ function App() {
               Sinta-se confiante em todas as ocasiões e experimente a 
               excelência em cada detalhe do seu tratamento.
             </p>
-            <WhatsappButton content={"AGENDAR UMA CONSULTA EM UMA UNIDADE"} />
+            <div className=''>
+              <WhatsappButton 
+                content={"ESCOLHER A UNIDADE MAIS PROXIMA"} 
+              />
+            </div>
           </div>
         </div>
       </section>
       {/* DEPOIMENTOS */}
       <section className='flex flex-col items-center text-center'>
         <h3 className='text-primary text-[20px] mt-2 tracking-[0.30rem]'>DEPOIMENTOS</h3>
-        <h4 className='text-[28px] font-bold mt-[-0.5%]'>
+        <h4 className='text-[28px] font-bold mt-[-0.5%] mobile:leading-7'>
           O que pensam nossos <span className='text-primary'>clientes</span> {' '}
           sobre os <span className='text-primary'>procedimentos</span>
         </h4>
-        <div className='flex justify-around'>
+        <div className='flex justify-around mobile:flex mobile:flex-col'>
           <img 
             src=""
             className='h-80 w-48'
