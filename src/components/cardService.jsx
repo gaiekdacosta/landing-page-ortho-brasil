@@ -7,21 +7,17 @@ const CardService = ({ img, title }) => {
                 <div className='relative'>
                     <img
                         src={img}
-                        className='border-[2px] shadow-md rounded-lg border-primary h-[450px] w-80'
+                        className='shadow-md rounded-lg h-[450px] w-80 mobile:h-[400px]'
                         alt='imagem procedimento'
                     />
-                    {title === 'LENTES' && 
-                        <>
-                            <img
-                                src={medal}
-                                className='absolute top-0 right-0 h-[60px] w-[60px] m-2'
-                                alt='medalha'
-                            />
-                            <p className='absolute top-16 right-0'>MAIS PROCURADO</p>
-                        </>
-                    }
                 </div>
-                <h4 className="text-primary text-[17px] font-medium">{title.toUpperCase()}</h4>
+                <h4 className="text-primary text-[17px] font-bold">{title.toUpperCase()}</h4>
+                <div className='flex w-80 rounded-lg bg-primary p-3 m-3 mt-1 text-white'>
+                    <p>
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
+                        Asperiores voluptas perspiciatis!
+                    </p>
+                </div>
             </div>
         </>
     );

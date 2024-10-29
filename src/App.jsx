@@ -4,20 +4,31 @@ import WhatsappButton from './components/whatsappButton'
 import CardService from './components/cardService'
 import Footer from './components/footer'
 import fachada from '../public/fachada.png'
+import fachada2 from '../public/fachada2.png'
 import { GiPin } from "react-icons/gi";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io"
 import { useState } from 'react'
 
 function App() {
-  const images = [fachada, logo];
+  const images = [fachada, fachada2];
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const handleNext = () => {
     setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
   };
 
+  console.log(images[currentImageIndex].split('/')[2])
+
+  const localization = () => {
+    if(images[currentImageIndex].split('/')[2] === 'fachada.png') {
+      return 'Rua da Assunção, 432'
+    } else {
+      return 'R. Almirante Rubim, 508'
+    }
+  }
+
   const handlePrev = () => {
-    setCurrentImageIndex((prevIndex) => 
+    setCurrentImageIndex((prevIndex) =>
       prevIndex === 0 ? images.length - 1 : prevIndex - 1
     );
   };
@@ -27,35 +38,35 @@ function App() {
       <section className='h-[100vh] bg-[url("public/tai9.jpg")] bg-cover bg-center'>
         <div className='flex justify-around h-[100%] items-center mobile:flex-col'>
           <div className='flex flex-col w-[50%] gap-2 p-4 rounded-lg mobile:w-full'>
-            <div className='text-[25px]  mobile:text-[20px]'>
+            <div className='text-[25px] mobile:text-[20px]'>
               <img className='h-16 w-16' src={logo} alt="logo" />
               <p className='font-black leading-7 mobile:leading-6'>
-                Transforme sua autoestima com a 
-                expertise de uma equipe 
+                Transforme sua autoestima com a
+                expertise de uma equipe
                 <span className='text-primary ml-1'>
                   especializada em estética
                 </span>
               </p>
               <div className='flex flex-col gap-5 mt-2 leading-7 mobile:leading-6 mobile:text-[19px]'>
                 <p>
-                  Oferecemos um serviço Premium que vai além do sorriso, 
-                  focando na harmonia e funcionalidade dos seus dentes. 
+                  Oferecemos um serviço Premium que vai além do sorriso,
+                  focando na harmonia e funcionalidade dos seus dentes.
                 </p>
                 <p>
-                  Sinta-se confiante em todas as ocasiões e experimente a 
+                  Sinta-se confiante em todas as ocasiões e experimente a
                   excelência em cada detalhe do seu tratamento.
                 </p>
               </div>
             </div>
-            <div className='w-[55%] mobile:w-full'>
+            <div>
               <WhatsappButton content={'AGENDAR UMA CONSULTA AGORA'} />
             </div>
           </div>
           <div className='mobile:flex mobile:p-4 mobile:justify-center mobile:w-full'>
-            <iframe 
-              width="560" 
-              height="315" 
-              src="https://www.youtube.com/embed/v0dMmEt98Ro" 
+            <iframe
+              width="560"
+              height="315"
+              src="https://www.youtube.com/embed/v0dMmEt98Ro"
               allowFullScreen
             />
           </div>
@@ -71,26 +82,26 @@ function App() {
           </span>
         </h4>
         <div className='flex w-full mt-2 justify-around items-center mobile:flex-col'>
-          <CardService 
+          <CardService
             img='../public/lentes.jpg'
             title={"PREENCHIMENTO"}
           />
-          <CardService 
+          <CardService
             img='../public/lentes-tree.jpg'
             title={"LENTES"}
           />
-          <CardService 
+          <CardService
             img='../public/lentes-four.jpg'
             title={"CLAREAMENTO"}
           />
         </div>
-        <div className='mt-5 w-96 mobile:w-80'>
-          <WhatsappButton 
-            content={"AGENDAR UM DOS PROCEDIMENTOS"} 
+        <div className='mt-2'>
+          <WhatsappButton content={"AGENDAR UM PROCEDIMENTO"}
           />
         </div>
       </section>
       {/*CASOS DE SUCESSO*/}
+      {/* 
       <section className='flex flex-col items-center text-center'>
         <h3 className='text-primary text-[20px] mt-2 tracking-[0.30rem]'>CASOS DE SUCESSO</h3>
         <h4 className='text-[28px] font-bold mt-[-0.5%] mobile:leading-7'>
@@ -101,11 +112,12 @@ function App() {
 
         </div>
       </section>
+      */}
       {/*QUEM SOMOS NÓS*/}
       <section className='flex flex-col items-center text-center'>
-        <h3 className='text-primary text-[20px] mt-2 tracking-[0.30rem]'>QUEM SOMOS NÓS</h3>
+        <h3 className='text-primary text-[20px] mt-5 tracking-[0.30rem]'>QUEM SOMOS NÓS</h3>
         <h4 className='text-[28px] font-bold mt-[-0.5%] whitespace-nowrap mobile:whitespace-normal mobile:leading-7'>
-          Um pouco sobre a historia da ortho brasil 
+          Um pouco sobre a historia da ortho brasil
           as nossas {''}
           <span className='text-primary inline-flex items-center'>
             localizações <GiPin className='text-[38px]' />
@@ -117,33 +129,33 @@ function App() {
               <button className='text-primary font-extrabold text-[25px]' onClick={handlePrev}>
                 <IoIosArrowBack className='text-[45px]' />
               </button>
-                <img 
-                  src={images[currentImageIndex]} 
-                  className='rounded-full border-2 border-primary h-[380px] w-[380px] mobile:h-[280px] mobile:w-[280px]'
-                  alt="local" 
-                />
+              <img
+                src={images[currentImageIndex]}
+                className='rounded-full border-2 border-primary h-[380px] w-[380px] mobile:h-[280px] mobile:w-[280px]'
+                alt="local"
+              />
               <button className='text-primary font-extrabold text-[25px]' onClick={handleNext}>
                 <IoIosArrowForward className='text-[45px]' />
               </button>
             </div>
-            <p className='font-medium mt-1'>432 R. DA ASSUNÇÃO</p>
+            <p className='font-medium mt-1'>{localization()}</p>
           </div>
           <div className='flex flex-col items-center text-left w-[580px] mt-5 mobile:w-full'>
             <p className='text-[18px] font-medium border-l-2 mb-5 border-primary pl-4 mobile:w-[95vw]'>
-              Oferecemos um serviço Premium que vai além do sorriso, 
-              focando na harmonia e funcionalidade dos seus dentes. 
+              Oferecemos um serviço Premium que vai além do sorriso,
+              focando na harmonia e funcionalidade dos seus dentes.
               <br /><br />
-              Sinta-se confiante em todas as ocasiões e 
+              Sinta-se confiante em todas as ocasiões e
               experimente a excelência em cada detalhe do seu tratamento.
               <br /><br />
-              Oferecemos um serviço Premium que vai além do sorriso, 
-              focando na harmonia e funcionalidade dos seus dentes. 
-              Sinta-se confiante em todas as ocasiões e experimente a 
+              Oferecemos um serviço Premium que vai além do sorriso,
+              focando na harmonia e funcionalidade dos seus dentes.
+              Sinta-se confiante em todas as ocasiões e experimente a
               excelência em cada detalhe do seu tratamento.
             </p>
-            <div className=''>
-              <WhatsappButton 
-                content={"ESCOLHER A UNIDADE MAIS PROXIMA"} 
+            <div className='w-full mobile:ml-3'>
+              <WhatsappButton
+                content={"ESCOLHER A UNIDADE MAIS PROXIMA"}
               />
             </div>
           </div>
@@ -157,17 +169,17 @@ function App() {
           sobre os <span className='text-primary'>procedimentos</span>
         </h4>
         <div className='flex justify-around mobile:flex mobile:flex-col'>
-          <img 
+          <img
             src=""
             className='h-80 w-48'
             alt="print depoimento"
           />
-          <img 
+          <img
             src=""
             className='h-80 w-48'
             alt="print depoimento"
           />
-                    <img 
+          <img
             src=""
             className='h-80 w-48'
             alt="print depoimento"
